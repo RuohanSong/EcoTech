@@ -1,0 +1,13 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Ignore database
+*.sqlite3
+
+# Ignore other sensitive or unnecessary files
+*.pyc
+__pycache__/
+*.log
+.env
