@@ -10,7 +10,6 @@ def home_view(request):
     return render(request, 'core/home.html')
 
 
-
 #About Us view- Will load the page for About Us
 def about_view(request):
     return render(request, 'core/about.html')
@@ -18,6 +17,10 @@ def about_view(request):
 
 def faq_view(request):
   return render(request, 'core/FAQ.html')
+
+
+def contact_view(request):
+  return render(request, 'core/contact.html')
 
 
 def signup_view(request):

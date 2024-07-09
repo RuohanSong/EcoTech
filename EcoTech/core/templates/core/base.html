@@ -1,108 +1,63 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="{% static 'core/style.css' %}" />
-  <title>EcoTech Connect - Homepage</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>
+        {% block title %}EcoTech{% endblock %}
+    </title>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'core/style.css' %}" />
+
+    <!-- Block for additional CSS files -->
+    {% block extra_css %}
+    {% endblock %}
 </head>
 
 <body>
-    <!-- header design -->
+    <!-- Navbar design -->
     <header class="header">
-      <a href="#" class="logo">EcoTech</a>
+      <a href="{% url 'core:home' %}" class="logo">EcoTech</a>
 
       <nav class="navbar">
-        <a href="#" class="active">Home</a>
-        <a href="{% url 'about' %}">About Us</a>
-        <a href="{% url 'FAQ/' %}">FAQ</a>
-        <a href="#">Contact Us</a>
+        <a href="{% url 'core:home' %}" class="active">Home</a>
+        <a href="{% url 'core:about' %}">About Us</a>
+        <a href="{% url 'core:faq' %}">FAQ</a>
+        <a href="{% url 'core:contact' %}">Contact Us</a>
       </nav>
     </header>
-    
-        <!--home section designs-->
-    <section class="home" id="home">
-      <div class="home-content">
-        <h1>EcoTech Connect</h1>
-        <h3>Empowering Sustainable Innovation</h3>
-          <br />
-        <p>EcoTech Connect is your one-stop platform for advancing green technologies.</p>
-        <br />
-          <p>
-        EcoTech Connect offers a wealth of information, resources, and tools to support
-        your journey towards a sustainable future. Browse articles, watch videos,
-        and discover innovative solutions for businesses and individuals.
-      </p>
-          <br />
-          <button class="btn"><a href="#">Learn More</a></button>
-      </div>
-       <div class="image"><img src="logo.jpg" alt="EcoTech Connect"></div> 
-        
-         <!-- Benefits Section Design -->
 
-    <section class="benefits" id="benefits">
-      <h2 class="heading">Benefits of joining <span>EcoTech Connect</span></h2>
-      <div class="benefits-container">
-        <div class="benefits-box">
-          <p>Sign Up to access exclusive content and resources</p>
-        </div>
+    <!-- Main Content -->
+    {% block content%}
 
-        <div class="benefits-box">
-          <p>Stay updated on the latest sustainability trends</p>
-        </div>
-          
-        <div class="benefits-box">
-          <p>Connect with a community of like-minded individuals and businesses</p>
-        </div>
-        <div class="benefits-box">
-          <p>Contribute to a greener future</p>
-        </div>
-      </div>
-        
-        <div class="benefits-btn">
-            <button class="btn"><a href="#">Sign Up Now</a></button>
-            </div>
-    </section>
-        
-        <!-- Newsletter Section Design -->
-    <section class="newsletter" id="newsletter">
-      <h2 class="heading">Join our <span>Newsletter!</span></h2>
-      <form action="mailto:info@ecotech.com" method="post"> 
-        <div class="input-box">
-          <input type="email" placeholder="Your Email Address" />
-        </div>
-        <input type="submit" value="Get Updates" class="btn" />
-      </form>
-    </section>
-        
-    </section>
+    {% endblock %}
     
-    
-<!--footer design-->
+    <!--footer design-->
     <footer class="footer">
       <div class="footer-text">
         <p>EcoTech Connect 2024 | All Rights Reserved</p>
       </div>
-        <div class="social-media">
-      <a href="https://www.facebook.com/ecotechconnect">Facebook</a>
-      <a href="https://www.x.com/ecotechconnect">Twitter</a>
-      <a href="https://www.linkedin.com/ecotechconnect">LinkedIn</a>
-    </div>
+
+      <div class="social-media">
+        <a href="https://www.facebook.com/ecotechconnect">Facebook</a>
+        <a href="https://www.x.com/ecotechconnect">Twitter</a>
+        <a href="https://www.linkedin.com/ecotechconnect">LinkedIn</a>
+      </div>
+
       <div class="footer-links">
         <ul>
-      <li><a href="#">About Us</a></li>
-      <li><a href="#">Terms of Service</a></li>
-      <li><a href="#">Privacy Policy</a></li>
-      <li><a href="#">Contact Us</a></li>
-      <li><a href="#">FAQ</a></li>
-    </ul>
+            <li><a href="{% url 'core:about' %}">About Us</a></li>
+            <li><a href="{% url 'core:contact' %}">Contact Us</a></li>
+            <li><a href="{% url 'core:faq' %}">FAQ</a></li>
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+        </ul>
       </div>
-        
     </footer>
 
 </body>
-
 </html>
