@@ -1,0 +1,103 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="{% static 'core/style.css' %}" />
+  <title>EcoTech Connect - Homepage</title>
+</head>
+
+<body>
+
+<div class="context">
+        <h1>EcoTech Connect</h1>
+    </div>
+
+
+    <div class="area">
+        <ul class="circles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+
+
+<!--Contact form-->
+
+
+    <section class="contact-section">
+        <div class="layout">
+            <div class="text-center">
+                <h1 class="contact-section-title">Contact Us</h1>
+                <p>Have queries? Reach out to us and we will get back to you!</p>
+            </div>
+            <div class="grid-8 form">
+                <form action="mailto:info@ecotech.com" method="post" id="contact_form" name="contactForm">
+                    <div class="form-inline clearfix">
+                        <div class="form-group grid-6 ">
+                            <input type="text" placeholder="name" id="exampleInputName" name="name"
+                                class="form-control">
+                        </div>
+                        <div class="form-group grid-6">
+                            <input type="email" placeholder="email address" id="exampleInputEmail" name="email"
+                                class="form-control">
+                        </div>
+                        <div class="form-group grid-6">
+                            <input type="text" placeholder="subject" id="exampleInputSubject" name="subject"
+                                class="form-control">
+                        </div>
+                        <div class="form-group grid-6">
+                            <input type="text" placeholder="company" id="exampleInputCompany" name="company"
+                                class="form-control">
+                        </div>
+                        <div class="form-group grid-12">
+                            <textarea placeholder="message" id="exampleInputMessage" rows="3" name="message"
+                                class="form-control"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                    </div>
+                    <div id="submit" class="form-group grid-12">
+                        <input type="submit" value="send" class="btn btn-lg custom-btn" id="send_message">
+                    </div>
+                </form>
+            </div> <!-- /.col-xs-12 .col-sm-offset-2 .col-sm-8 -->
+        
+        </div>
+    </section>
+
+
+<!--footer design-->
+    <footer class="footer">
+      <div class="footer-text">
+        <p>EcoTech Connect 2024 | All Rights Reserved</p>
+      </div>
+        <div class="social-media">
+      <a href="https://www.facebook.com/ecotechconnect">Facebook</a>
+      <a href="https://www.x.com/ecotechconnect">Twitter</a>
+      <a href="https://www.linkedin.com/ecotechconnect">LinkedIn</a>
+    </div>
+      <div class="footer-links">
+        <ul>
+      <li><a href="#">About Us</a></li>
+      <li><a href="#">Terms of Service</a></li>
+      <li><a href="#">Privacy Policy</a></li>
+      <li><a href="#">Contact Us</a></li>
+      <li><a href="#">FAQ</a></li>
+    </ul>
+      </div>
+        
+    </footer>
+</body>
+</html>

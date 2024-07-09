@@ -1,0 +1,64 @@
+{% extends 'core/base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="{% static 'core/style.css' %}" />
+    <title>About Us</title>
+</head>
+
+
+<body>
+<!-- header design -->
+    <header class="header">
+      <a href="#" class="logo">EcoTech</a>
+
+      <nav class="navbar">
+        <a href="#" class="active">Home</a>
+        <a href="{% url 'faq' %}">FAQ</a>
+        <a href="#">Contact Us</a>
+      </nav>
+    </header>
+
+     <!--home section designs-->
+    <section class="home" id="home">
+      <div class="home-content">
+        <h1>Who are we?</h1>
+        <!--<h3>Empowering Sustainable Innovation</h3>-->
+          <br />
+          <p>
+        EcoTech Connect is driven by the mission to empower individuals and businesses to embrace greener technologies. We envision a world where sustainable practices are not just the exception, but the norm. Our platform provides a wealth of information, resources, and tools to support your journey towards a more sustainable future.
+        <br />
+        We're proud of the growing EcoTech community, a network of passionate enthusiasts who share knowledge, inspire action, and spread awareness about eco-friendly solutions. Together, we've achieved significant milestones, helping countless individuals and businesses adopt greener practices.
+        <br />
+        Ready to join the movement? Explore our platform, discover innovative solutions, and register for an account to unlock exclusive features and connect with a like-minded community. Let's work together to build a more sustainable future for generations to come!
+        </p>
+          <br />
+          <button class="btn"><a href="#">Join Us!</a></button>
+      </div>
+        <!--footer design-->
+    <footer class="footer">
+      <div class="footer-text">
+        <p>EcoTech Connect 2024 | All Rights Reserved</p>
+      </div>
+        <div class="social-media">
+      <a href="https://www.facebook.com/ecotechconnect">Facebook</a>
+      <a href="https://www.x.com/ecotechconnect">Twitter</a>
+      <a href="https://www.linkedin.com/ecotechconnect">LinkedIn</a>
+    </div>
+      <div class="footer-links">
+        <ul>
+      <li><a href="#">About Us</a></li>
+      <li><a href="#">Terms of Service</a></li>
+      <li><a href="#">Privacy Policy</a></li>
+      <li><a href="#">Contact Us</a></li>
+      <li><a href="#">FAQ</a></li>
+    </ul>
+      </div>
+        
+    </footer>
+</body>
+</html>
