@@ -1,0 +1,42 @@
+{% extends 'core/base.html' %}
+
+{% block title %}EcoTech | Log In{% endblock %}
+
+{% load static %}
+
+{% block extra_css %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'users/login.css' %}" />
+{% endblock %}
+
+{% block content %}
+<div class="login-container">
+    <div class="login-box row">
+        <div class="col-md-6 social-login">
+            <h2 class="text-center">Log In</h2>
+            <a href="#" class="google">Log In with Google</a>
+            <a href="#" class="github">Log In with GitHub</a>
+            <a href="#" class="facebook">Log In with Facebook</a>
+        </div>
+        <div class="col-md-6">
+            <form>
+                <div class="form-group">
+                    <label for="username">Username or Email</label>
+                    <input type="text" class="form-control" id="username" placeholder="Username or Email">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" placeholder="Password">
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Log In</button>
+                <div class="text-center mt-3">
+                    <a href="#" class="text-light">Forgot Password?</a>
+                </div>
+                <div class="text-center mt-3">
+                    <span>Need an account? </span><a href="#" class="text-light">Sign up now!</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
