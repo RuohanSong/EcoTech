@@ -3,11 +3,56 @@ __pycache__/
 *.py[cod]
 *$py.class
 
-# Ignore database
+# Django stuff:
+*.log
+*.pot
+*.pyc
+*.pyo
+*.db
 *.sqlite3
 
-# Ignore other sensitive or unnecessary files
-*.pyc
-__pycache__/
-*.log
+# Django migrations
+*/migrations/*
+
+# Local environment settings
 .env
+
+# Python virtual environment
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# VS Code settings
+.vscode/
+
+# JetBrains IDEs
+.idea/
+
+# macOS files
+.DS_Store
+
+# Windows files
+Thumbs.db
+*.cab
+*.msi
+*.msm
+*.msp
+
+# pyenv
+.python-version
+
+# pipenv
+Pipfile.lock
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# Documents
+Docs
