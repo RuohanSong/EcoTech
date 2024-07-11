@@ -23,12 +23,23 @@
     <header class="header">
       <a href="{% url 'core:home' %}" class="logo">EcoTech</a>
 
+      <!-- add a search bar -->
+
+
+      {% if user.is_authenticated %}
+      <!-- show the user's name and a dropdown menu with multiple user features such as logout on the top right corner -->
+
+
+      {% else %}
+      <!-- show the signup and login button on the top right corner -->
       <nav class="navbar">
         <a href="{% url 'core:home' %}" class="active">Home</a>
         <a href="{% url 'core:about' %}">About Us</a>
-        <a href="{% url 'core:faq' %}">FAQ</a>
-        <a href="{% url 'core:contact' %}">Contact Us</a>
+        <a href="{% url 'users:signup' %}">Sign Up</a>
+        <a href="{% url 'users:login' %}">Log In</a>
       </nav>
+      {% endif %}
+
     </header>
 
     <!-- Main Content -->
