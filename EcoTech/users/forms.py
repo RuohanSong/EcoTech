@@ -1,18 +1,18 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from .models import *
 
 
-class MemberSignUpForm(UserCreationForm):
+class SignUpForm(UserCreationForm):
     email = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-control'}))
     name = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
     password1 = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control'}))
     password2 = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control'}))
 
     class Meta:
-        model = Member
+        model = User
         fields = ('email', 'name', 'password1', 'password2', 'city', 'country')
+
     def clean_password2(self):
         password1 = self.cleaned_data.get("password1")
         password2 = self.cleaned_data.get("password2")
@@ -21,16 +21,20 @@ class MemberSignUpForm(UserCreationForm):
         return password2
 
     def save(self, commit=True):
-        user = User.objects.create_user(
-            username=self.cleaned_data['email'],
-            password=self.cleaned_data['password1'],
-        )
-        member = Member(user=user)
+        user = super().save(commit=True)
+        user.username = self.cleaned_data['email']
         if commit:
             user.save()
-            member.save()
-        return member
+            return user
+
 
 class LoginForm(forms.Form):
-    username = forms.CharField(max_length =150, required=True)
-    password = forms.CharField(widget=forms.PasswordInput, label="Password", required=True)
+    username = forms.CharField(
+        max_length=150,
+        required=True,
+        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Email'})
+    )
+    password = forms.CharField(
+        required=True,
+        widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Password'})
+    )

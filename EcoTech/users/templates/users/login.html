@@ -11,29 +11,34 @@
 
 {% block content %}
 <div class="login-container">
-    <div class="login-box row">
-        <div class="col-md-6 social-login">
-            <h2 class="text-center">Log In</h2>
-            <a href="#" class="google">Log In with Google</a>
-            <a href="#" class="github">Log In with GitHub</a>
-            <a href="#" class="facebook">Log In with Facebook</a>
+    <div class="login-box">
+        <div class="col-md-6 slogan d-flex justify-content-center">
+            <h2 class="text-center fs-1">EcoTech</h2>
+            <p class="fw-medium fs-3">
+                Empowering a Greener Future, <br>One Innovation at a Time.
+            </p>
         </div>
-        <div class="col-md-6">
-            <form>
-                <div class="form-group">
-                    <label for="username">Username or Email</label>
-                    <input type="text" class="form-control" id="username" placeholder="Username or Email">
+        <div class="col-md-6 form d-flex justify-content-center align-items-center">
+            <form method="post" class="w-100">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="username">Email</label>
+<!--                    <input type="text" class="form-control" id="username" placeholder="Email" value="{{ form.username }}">-->
+                        {{ form.username }}
                 </div>
-                <div class="form-group">
+                <div class="mb-3">
                     <label for="password">Password</label>
-                    <input type="password" class="form-control" id="password" placeholder="Password">
+<!--                    <input type="password" class="form-control" id="password" placeholder="Password" value="{{ form.password }}">-->
+                        {{ form.password }}
                 </div>
-                <button type="submit" class="btn btn-primary btn-block">Log In</button>
+                <div class="d-grid gap-1 col-6">
+                    <button type="submit" class="btn btn-primary btn-block">Log In</button>
+                </div>
                 <div class="text-center mt-3">
                     <a href="#" class="text-light">Forgot Password?</a>
                 </div>
                 <div class="text-center mt-3">
-                    <span>Need an account? </span><a href="#" class="text-light">Sign up now!</a>
+                    <a href="#" class="text-light">Create an account</a>
                 </div>
             </form>
         </div>

@@ -1,4 +1,3 @@
-
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
@@ -16,20 +15,8 @@ def about_view(request):
 
 
 def faq_view(request):
-  return render(request, 'core/FAQ.html')
+    return render(request, 'core/FAQ.html')
 
 
 def contact_view(request):
-  return render(request, 'core/contact.html')
-
-
-def signup_view(request):
-  if request.method == 'POST':
-    form = UserCreationForm(request.POST)
-    if form.is_valid():
-      user = form.save()
-      login(request, user)  # Log the user in after successful signup
-      return redirect('home')  # Redirect to the home page after signup
-  else:
-    form = UserCreationForm()
-  return render(request, 'core/signup.html', {'form': form})
+    return render(request, 'core/contact.html')

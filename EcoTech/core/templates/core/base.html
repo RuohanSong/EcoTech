@@ -28,6 +28,7 @@
 
       {% if user.is_authenticated %}
       <!-- show the user's name and a dropdown menu with multiple user features such as logout on the top right corner -->
+        <a href="{% url 'users:logout' %}">Log Out</a>
 
 
       {% else %}
