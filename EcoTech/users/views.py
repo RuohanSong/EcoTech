@@ -10,17 +10,27 @@ def signup_view(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
         if form.is_valid():
-            user = form.save()
-            username = user.username
+            form.save()
+            username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password1')
-            authenticated_user = authenticate(username=username, password=password)
-            if authenticated_user:
+            authenticated_member = authenticate(username=username, password=password)
+            if authenticated_member:
+                print('Account created successfully')
                 messages.success(request, 'Account created successfully')
-                return redirect('users:login')    # will redirect to a user landing page later
+                return redirect('users:login')    # redirect to the user login page
+            else:
+                print('Invalid email or password')
+                messages.error(request, 'Invalid email or password')
+                form = SignUpForm()
+                return render(request, 'users/signup.html', {'form': form, 'error_message': 'Invalid email or password'})
+        else:
+            print('Form is not valid')
+            form = SignUpForm()
+            return render(request, 'users/signup.html', {'form': form, 'error_message': 'Invalid email or password! Please try again'})
     else:
+        print('refreshing')
         form = SignUpForm()
-        context = {'form': form}
-        return render(request, 'users/signup.html', context)
+        return render(request, 'users/signup.html', {'form': form})
 
 
 def login_view(request):

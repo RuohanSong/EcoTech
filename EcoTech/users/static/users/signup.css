@@ -1,7 +1,6 @@
 /* signup.css */
 body {
     background-color: #f8f9fa;
-    color: white;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -19,7 +18,7 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for better visibility */
     max-width: 700px;
     margin: 0 auto;
-    margin-top: 130px; /* Adjust this value based on the height of the navbar */
+    margin-top: 110px; /* Adjust this value based on the height of the navbar */
     margin-bottom: 80px;
 }
 
@@ -27,11 +26,38 @@ body {
     width: 100%;
 }
 
-.signup-container .form-group,
-.signup-container .form-row {
-    margin-bottom: 15px;
-}
-
 .signup-container button {
     width: 100%;
+}
+
+.signup-container form label {
+    margin-top: 15px;
+}
+
+.form-group {
+    margin-top: 15px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.error_class, .invalid-feedback, .error_class, .helptext {
+    color: #81a684;
+}
+
+.alert,
+.signup-container form input,
+.signup-container form label,
+.signup-container form .form-check-label,
+.signup-container form .btn {
+    font-size: 1.1rem;
+}
+
+.form-check {
+    display: flex;
+    align-items: baseline;
+    margin-left: -1em;
+}
+
+.form-check-input {
+    margin-right: 0.5rem;
 }

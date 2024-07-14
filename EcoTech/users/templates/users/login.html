@@ -21,16 +21,7 @@
         <div class="col-md-6 form d-flex justify-content-center align-items-center">
             <form method="post" class="w-100">
                 {% csrf_token %}
-                <div class="mb-3">
-                    <label for="username">Email</label>
-<!--                    <input type="text" class="form-control" id="username" placeholder="Email" value="{{ form.username }}">-->
-                        {{ form.username }}
-                </div>
-                <div class="mb-3">
-                    <label for="password">Password</label>
-<!--                    <input type="password" class="form-control" id="password" placeholder="Password" value="{{ form.password }}">-->
-                        {{ form.password }}
-                </div>
+                {{ form.as_p }}
                 <div class="d-grid gap-1 col-6">
                     <button type="submit" class="btn btn-primary btn-block">Log In</button>
                 </div>
@@ -38,7 +29,7 @@
                     <a href="#" class="text-light">Forgot Password?</a>
                 </div>
                 <div class="text-center mt-3">
-                    <a href="#" class="text-light">Create an account</a>
+                    <a href="{% url 'users:signup' %}" class="text-light">Create an account</a>
                 </div>
             </form>
         </div>

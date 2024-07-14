@@ -1,38 +1,37 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.models import User
+
 from .models import *
 
 
 class SignUpForm(UserCreationForm):
-    email = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-control'}))
-    name = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
-    password1 = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control'}))
-    password2 = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control'}))
+    username = forms.EmailField(
+        required=True,
+        max_length=150,
+        label="Email",  # make user to input an email as the username
+    )
+    city = forms.CharField(required=False)
+    country = forms.CharField(required=False)
 
     class Meta:
-        model = User
-        fields = ('email', 'name', 'password1', 'password2', 'city', 'country')
-
-    def clean_password2(self):
-        password1 = self.cleaned_data.get("password1")
-        password2 = self.cleaned_data.get("password2")
-        if password1 and password2 and password1 != password2:
-            raise forms.ValidationError("Passwords don't match")
-        return password2
+        model = Member
+        fields = ('first_name', 'last_name', 'username', 'password1', 'password2', 'city', 'country')
 
     def save(self, commit=True):
-        user = super().save(commit=True)
-        user.username = self.cleaned_data['email']
+        member = super().save(commit=False)
+        member.email = self.cleaned_data['username']    # save member's email as well
         if commit:
-            user.save()
-            return user
+            member.save()
+            return member
 
 
 class LoginForm(forms.Form):
-    username = forms.CharField(
+    username = forms.EmailField(
         max_length=150,
         required=True,
-        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Email'})
+        label="Email",  # make user to input an email as the username
+        widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Email'})
     )
     password = forms.CharField(
         required=True,

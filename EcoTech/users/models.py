@@ -3,9 +3,9 @@ from django.db import models
 
 
 # Create your models here.
-class User(AbstractUser):
-    city = models.CharField(max_length=50)
-    country = models.CharField(max_length=50)
+class Member(AbstractUser):
+    city = models.CharField(max_length=50, blank=True, null=True)
+    country = models.CharField(max_length=50, blank=True, null=True)
 
     def __str__(self):
         return self.username
