@@ -1,0 +1,31 @@
+<!-- contents/templates/contents/article_search.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Article Search Results</title>
+</head>
+<body>
+    <h2>Search Results</h2>
+    <form method="get" action="{% url 'contents:article_search' %}">
+        <input type="text" name="q" placeholder="Search articles...">
+        <button type="submit">Search</button>
+    </form>
+    
+    <ul>
+        {% if articles %}
+            {% for article in articles %}
+            <li>
+                <h3>{{ article.title }}</h3>
+                <p>{{ article.content }}</p>
+                <p><strong>Author:</strong> {{ article.author }}</p>
+                <p><strong>Date:</strong> {{ article.publication_date }}</p>
+            </li>
+            {% empty %}
+            <li>No articles found.</li>
+            {% endfor %}
+        {% endif %}
+    </ul>
+</body>
+</html>

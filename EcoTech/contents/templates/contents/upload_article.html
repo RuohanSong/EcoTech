@@ -1,0 +1,17 @@
+<!-- contents/templates/contents/upload_article.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload Article</title>
+</head>
+<body>
+    <h2>Upload Article</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Upload</button>
+    </form>
+</body>
+</html>

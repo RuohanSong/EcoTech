@@ -1,0 +1,33 @@
+{% load static %}
+
+{% block title %}Article List{% endblock %}
+
+{% block content %}
+<div class="content-page-animation">
+    <div class="animated-background">
+        <div class="circles">
+            <ul>
+                <li></li>
+                <!-- Add more li elements as needed -->
+            </ul>
+        </div>
+    </div>
+    
+    <h2>Article List</h2>
+    
+    {% if articles %}
+        <ul>
+            {% for article in articles %}
+            <li>
+                <h3>{{ article.title }}</h3>
+                <p>{{ article.content }}</p>
+                <p><strong>Author:</strong> {{ article.author }}</p>
+                <p><strong>Date:</strong> {{ article.publication_date }}</p>
+            </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No articles found.</p>
+    {% endif %}
+</div>
+{% endblock %}
