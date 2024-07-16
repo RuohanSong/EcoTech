@@ -23,10 +23,10 @@
                 {% csrf_token %}
                 {{ form.as_p }}
                 <div class="d-grid gap-1 col-6">
-                    <button type="submit" class="btn btn-primary btn-block">Log In</button>
+                    <button type="submit" class="btn btn-light btn-block">Log In</button>
                 </div>
                 <div class="text-center mt-3">
-                    <a href="#" class="text-light">Forgot Password?</a>
+                    <a href="{% url 'users:password-forgot' %}" class="text-light">Forgot Password?</a>
                 </div>
                 <div class="text-center mt-3">
                     <a href="{% url 'users:signup' %}" class="text-light">Create an account</a>
