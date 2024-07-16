@@ -4,7 +4,7 @@ from .forms import ArticleForm, ArticleSearchForm
 
 def upload_article(request):
     if request.method == "POST":
-        form = ArticleForm(request.POST)
+        form = ArticleForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect('contents:article_list')
