@@ -1,33 +1,48 @@
 {% load static %}
 
-{% block title %}Article List{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Article List{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'core/style.css' %}">
+</head>
+<body>
+    <header>
+        <!-- Header content goes here -->
+    </header>
 
-{% block content %}
-<div class="content-page-animation">
-    <div class="animated-background">
-        <div class="circles">
-            <ul>
-                <li></li>
-                <!-- Add more li elements as needed -->
-            </ul>
+    <div class="content-page-animation">
+        <div class="animated-background">
+            <div class="circles">
+                <ul>
+                    <li></li>
+                    <!-- Add more li elements as needed -->
+                </ul>
+            </div>
         </div>
+        
+        <h2>Article List</h2>
+        
+        {% if articles %}
+            <ul class="article-list">
+                {% for article in articles %}
+                <li>
+                    <h3>{{ article.title }}</h3>
+                    <p>{{ article.content }}</p>
+                    <p><strong>Author:</strong> {{ article.author }}</p>
+                    <p><strong>Date:</strong> {{ article.publication_date }}</p>
+                </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No articles found.</p>
+        {% endif %}
     </div>
-    
-    <h2>Article List</h2>
-    
-    {% if articles %}
-        <ul>
-            {% for article in articles %}
-            <li>
-                <h3>{{ article.title }}</h3>
-                <p>{{ article.content }}</p>
-                <p><strong>Author:</strong> {{ article.author }}</p>
-                <p><strong>Date:</strong> {{ article.publication_date }}</p>
-            </li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p>No articles found.</p>
-    {% endif %}
-</div>
-{% endblock %}
+
+    <footer>
+        <!-- Footer content goes here -->
+    </footer>
+</body>
+</html>
