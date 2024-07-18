@@ -1,8 +1,9 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
-
+from .models import UserProfile
 from .models import *
+import json
 
 
 class SignUpForm(UserCreationForm):
@@ -20,7 +21,7 @@ class SignUpForm(UserCreationForm):
 
     def save(self, commit=True):
         member = super().save(commit=False)
-        member.email = self.cleaned_data['username']    # save member's email as well
+        member.email = self.cleaned_data['username']  # save member's email as well
         if commit:
             member.save()
             return member
@@ -37,3 +38,11 @@ class LoginForm(forms.Form):
         required=True,
         widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Password'})
     )
+
+
+# forms.py
+
+class UserProfileForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        fields = ['bio', 'profile_pic']
