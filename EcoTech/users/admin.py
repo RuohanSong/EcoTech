@@ -14,3 +14,4 @@ class MemberAdmin(UserAdmin):
 
 # Register your models here.
 admin.site.register(Member, MemberAdmin)
+admin.site.register(SecurityQuestions)

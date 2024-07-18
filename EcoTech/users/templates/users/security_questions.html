@@ -1,6 +1,6 @@
 {% extends "core/base.html" %}
 
-{% block title %}EcoTech | Confirm Your Email{% endblock %}
+{% block title %}EcoTech | Security Questions{% endblock %}
 
 {% load static %}
 
@@ -24,9 +24,21 @@
         {% endif %}
 
         <div class="form-group">
-            <p>To reset your password, please confirm your email.</p>
+            <p>To reset your password, please answer your security questions correctly.</p>
         </div>
-        {{ form.as_div }}
+
+        <div class="mb-3">
+            <label for="security_question_1">{{ question_1_text }}</label>
+            <input type="text" name="security_answer_1" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="security_question_2">{{ question_2_text }}</label>
+            <input type="text" name="security_answer_2" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="security_question_3">{{ question_3_text }}</label>
+            <input type="text" name="security_answer_3" class="form-control" required>
+        </div>
 
         <button type="submit" class="btn btn-success">Submit</button>
     </form>
