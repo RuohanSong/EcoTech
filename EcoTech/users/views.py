@@ -39,7 +39,7 @@ def signup_view(request):
 
 def login_view(request):
     if request.user.is_authenticated:
-        return redirect('core:home')    # redirect to user dashboard later
+        return redirect('contents:article_list')    # redirect to user dashboard later
 
     if request.method == 'POST':
         form = LoginForm(request.POST)
@@ -50,7 +50,7 @@ def login_view(request):
             authenticated_user = authenticate(request, username=username, password=password)
             if authenticated_user is not None:
                 login(request, authenticated_user)
-                return redirect('core:home')    # redirect to user dashboard later
+                return redirect('contents:article_list')    # redirect to user dashboard later
             else:
                 error_message = 'Invalid username or password!<br>Please try again!'
                 print("Authentication failed: Invalid credentials")
