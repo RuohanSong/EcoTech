@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Article
 from .forms import ArticleForm, ArticleSearchForm
 
@@ -13,7 +13,7 @@ def upload_article(request):
     return render(request, 'upload_article.html', {'form': form})
 
 def article_list(request):
-    articles = Article.objects.all()
+    articles = Article.objects.all().only('id', 'title')
     form = ArticleSearchForm(request.GET)
     if form.is_valid():
         title = form.cleaned_data.get('title')
@@ -46,3 +46,10 @@ def article_search(request):
             articles = articles.filter(created_at__date=created_at)
 
     return render(request, 'contents/article_search.html', {'articles': articles, 'form': form})
+
+def article_detail(request, pk):
+    article = get_object_or_404(Article, pk=pk)
+    context = {
+        'article': article,
+    }
+    return render(request, 'article_detail.html', context)
