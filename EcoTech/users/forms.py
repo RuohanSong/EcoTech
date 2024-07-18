@@ -49,6 +49,7 @@ class SignUpForm(UserCreationForm):
                 security_answer_3=self.cleaned_data['security_answer_3'],
             )
             security_questions.save()
+            UserProfile.objects.create(user=member)    # create an UserProfile object when a user is signing up
             return member
 
 

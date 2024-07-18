@@ -23,16 +23,18 @@ def signup_view(request):
             else:
                 print('Invalid email or password')
                 messages.error(request, 'Invalid email or password')
-                form = SignUpForm()
-                return render(request, 'users/signup.html', {'form': form, 'error_message': 'Invalid email or password'})
+                # form = SignUpForm()
+                # return render(request, 'users/signup.html', {'form': form, 'error_message': 'Invalid email or password'})
         else:
             print('Form is not valid')
-            form = SignUpForm()
-            return render(request, 'users/signup.html', {'form': form, 'error_message': 'Invalid email or password! Please try again'})
+            messages.error(request, 'Form is not valid')
+            # form = SignUpForm()
+            # return render(request, 'users/signup.html', {'form': form, 'error_message': 'Invalid email or password! Please try again'})
     else:
         print('refreshing')
         form = SignUpForm()
-        return render(request, 'users/signup.html', {'form': form})
+
+    return render(request, 'users/signup.html', {'form': form})
 
 
 def login_view(request):

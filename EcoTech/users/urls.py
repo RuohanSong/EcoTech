@@ -14,5 +14,4 @@ urlpatterns = [
     path('password_reset_done', password_reset_done_view, name='password_reset_done'),
     path('profile/<str:username>/', view_profile, name='view_profile'),
     path('profile/<str:username>/edit/', edit_profile, name='edit_profile'),
-
 ]
