@@ -12,4 +12,7 @@ urlpatterns = [
     path('security_questions', security_questions_view, name='security_questions'),
     path('password_reset/', password_reset_view, name='password_reset'),
     path('password_reset_done', password_reset_done_view, name='password_reset_done'),
+    path('profile/<str:username>/', view_profile, name='view_profile'),
+    path('profile/<str:username>/edit/', edit_profile, name='edit_profile'),
+
 ]

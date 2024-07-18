@@ -3,8 +3,9 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, SetPasswordForm
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth.models import User
-
+from .models import UserProfile
 from .models import *
+import json
 
 
 class SignUpForm(UserCreationForm):
@@ -35,7 +36,7 @@ class SignUpForm(UserCreationForm):
 
     def save(self, commit=True):
         member = super().save(commit=False)
-        member.email = self.cleaned_data['username']    # save member's email as well
+        member.email = self.cleaned_data['username']  # save member's email as well
         if commit:
             member.save()
             security_questions = SecurityQuestions(
@@ -89,3 +90,11 @@ class PasswordResetForm(SetPasswordForm):
     class Meta:
         model = get_user_model()
         fields = ('new_password1', 'new_password2')
+
+
+# forms.py
+
+class UserProfileForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        fields = ['bio', 'profile_pic']
