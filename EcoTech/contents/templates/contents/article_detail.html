@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ article.title }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .article-header {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .article-header h1 {
+            font-size: 28px;
+            color: #333;
+        }
+
+        .article-header p {
+            font-size: 16px;
+            color: #666;
+        }
+
+        .article-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .article-content p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #444;
+        }
+    </style>
+</head>
+<body>
+    <div class="article-header">
+        <h1>{{ article.title }}</h1>
+        <p>Author: {{ article.author }}</p>
+    </div>
+    <div class="article-content">
+        <p>{{ article.content }}</p>
+        <!-- Add other article details as needed -->
+    </div>
+    <a href="{% url 'contents:article_list' %}" class="back-link">Back to Article List</a>
+</body>
+</html>

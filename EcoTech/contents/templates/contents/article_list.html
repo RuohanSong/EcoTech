@@ -1,0 +1,162 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Article List{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'core/style.css' %}">
+    <style>
+        /* Existing CSS from your stylesheet */
+
+        /* Additional CSS */
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 20px;
+            margin: 0 auto;
+            max-width: 600px;
+        }
+        .search-form {
+            margin-bottom: 20px;
+            width: 100%;
+        }
+        .search-form form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .search-form input, .search-form select {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        .search-form button {
+            padding: 10px;
+            border: none;
+            background-color: var(--main-color);
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .search-form button:hover {
+            background-color: var(--text-color);
+        }
+        .article-list {
+            width: 100%;
+            list-style-type: none;
+            padding: 0;
+        }
+        .article-list li {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+        .article-list a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+        .article-list a:hover {
+            text-decoration: underline;
+        }
+        .article-title {
+            font-weight: bold;
+        }
+        .article-author {
+            font-style: italic;
+            color: #555;
+        }
+        .content-page-animation {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+        }
+        .animated-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        .circles ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        .circles li {
+            position: absolute;
+            display: block;
+            list-style: none;
+            width: 20px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            animation: animate 25s linear infinite;
+            bottom: -150px;
+        }
+        .circles li {
+    position: absolute;
+    display: block;
+    list-style: none;
+    width: 20px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    animation: animate 25s linear infinite;
+    bottom: -150px;
+}
+      
+        @keyframes animate {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; border-radius: 0; }
+            100% { transform: translateY(-1000px) rotate(720deg); opacity: 0; border-radius: 50%; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <!-- Header content goes here -->
+    </header>
+
+    <div class="content-page-animation">
+        <div class="animated-background">
+            <div class="circles">
+                <ul>
+                    <li></li>
+                    <!-- Add more li elements as needed -->
+                </ul>
+            </div>
+        </div>
+
+        <div class="container">
+            <h2>Article List</h2>
+
+            <div class="search-form">
+                <form method="get">
+                    {{ form.as_p }}
+                    <button type="submit">Search</button>
+                </form>
+            </div>
+
+            {% if articles %}
+                <ul class="article-list">
+                    {% for article in articles %}
+                        <li>
+                            <span class="article-title">Article title:</span> 
+                            <a href="{% url 'contents:article_detail' article.id %}">{{ article.title }}</a>
+                            <span class="article-author"> by {{ article.author }}</span>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No articles found.</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <footer>
+        <!-- Footer content goes here -->
+    </footer>
+</body>
+</html>
