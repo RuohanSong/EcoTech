@@ -27,10 +27,8 @@ body {
 }
 
 .slogan {
-    /*display: flex;*/
     align-items: flex-start;
     flex-direction: column;
-    /*justify-content: center;*/
 }
 
 .form {
@@ -41,9 +39,9 @@ body {
 }
 
 .form-control {
-    /*color: white;*/
     border: none;
     margin-bottom: 15px;
+    text-transform: none;
 }
 
 .form-control::placeholder {
@@ -58,3 +56,10 @@ body {
 .btn-primary:hover {
     background-color: #45a049;
 }
+
+.alert-success {
+    color: #050609;
+    margin-bottom: 15px;
+}
+
+
