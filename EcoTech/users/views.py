@@ -20,24 +20,19 @@ def signup_view(request):
             authenticated_member = authenticate(username=username, password=password)
             if authenticated_member:
                 print('Account created successfully')
-                messages.success(request, 'Account created successfully')
+                messages.success(request, 'Account created successfully!')
                 return redirect('users:login')    # redirect to the user login page
             else:
                 print('Invalid email or password')
-                messages.error(request, 'Invalid email or password')
-                return redirect('users:signup')
-                # form = SignUpForm()
-                # return render(request, 'users/signup.html', {'form': form, 'error_message': 'Invalid email or password'})
+                messages.error(request, 'Invalid email or password!')
+                return redirect('users:signup')     # make sure to render a new empty form
         else:
             print('Form is not valid')
-            messages.error(request, 'Form is not valid')
+            messages.error(request, 'Form is not valid!')
             return redirect('users:signup')
-            # form = SignUpForm()
-            # return render(request, 'users/signup.html', {'form': form, 'error_message': 'Invalid email or password! Please try again'})
     else:
         form = SignUpForm()
-
-    return render(request, 'users/signup.html', {'form': form})
+        return render(request, 'users/signup.html', {'form': form})
 
 
 def login_view(request):
@@ -80,11 +75,16 @@ def password_forgot_view(request):
         form = PasswordForgotForm(request.POST)
         if form.is_valid():
             email = form.cleaned_data.get('email')
-            member = get_object_or_404(Member, email=email)
-            request.session['member_email'] = email
-            return redirect('users:security_questions')
+            try:
+                member = get_object_or_404(Member, email=email)
+                request.session['member_email'] = email
+                return redirect('users:security_questions')
+            except Exception:
+                messages.error(request, 'The email does not exist.')
+                return redirect('users:password_forgot')
         else:
             messages.error(request, 'Invalid email!')
+            return redirect('users:password_forgot')
     else:
         form = PasswordForgotForm()
     return render(request, 'users/password_forgot.html', {'form': form})

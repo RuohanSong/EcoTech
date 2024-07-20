@@ -60,3 +60,8 @@ body {
 .form-check-input {
     margin-right: 0.5rem;
 }
+
+.alert {
+    color: #81a684;
+    border-block-color: #81a684;
+}

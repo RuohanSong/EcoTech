@@ -18,16 +18,28 @@ class SignUpForm(UserCreationForm):
     country = forms.CharField(required=False)
 
     QUESTION_CHOICES = [
-        ('q1', 'What is your favorite color?'),
-        ('q2', 'What is your mother\'s first name?'),
-        ('q3', 'What was the name of your first pet?')
+        ('q1', 'What year did you enter college?'),
+        ('q2', 'What year was your father born?'),
+        ('q3', 'What is your mother\'s first name?'),
+        ('q4', 'What was the name of your first pet?'),
+        ('q5', 'What is the manufacturer of your first car?'),
+        ('q6', 'How many pets have you had'),
+        ('q7', 'Which city were you born in?'),
+        ('q8', 'In which city did your parents meet?'),
+        ('q9', 'What is your oldest sibling\'s first name?'),
+        ('q10', 'In which city did you meet your spouse?'),
+        ('q11', 'Which country did you go for the first travel abroad?'),
+        ('q12', 'Which city did you go the first time you flew on a plane?'),
+        ('q13', 'What is the name of the street where you grew up?'),
+        ('q14', 'In which city did you grow up?'),
+        ('q15', 'Which city were you in on the first day of 2024?'),
     ]
 
-    security_question_1 = forms.ChoiceField(choices=QUESTION_CHOICES, required=True, label="Security Question 1")
+    security_question_1 = forms.ChoiceField(choices=QUESTION_CHOICES, required=True, initial='q1', label="Security Question 1")
     security_answer_1 = forms.CharField(required=True, label="Answer to Security Question 1")
-    security_question_2 = forms.ChoiceField(choices=QUESTION_CHOICES, required=True, label="Security Question 2")
+    security_question_2 = forms.ChoiceField(choices=QUESTION_CHOICES, required=True, initial='q4', label="Security Question 2")
     security_answer_2 = forms.CharField(required=True, label="Answer to Security Question 2")
-    security_question_3 = forms.ChoiceField(choices=QUESTION_CHOICES, required=True, label="Security Question 3")
+    security_question_3 = forms.ChoiceField(choices=QUESTION_CHOICES, required=True, initial='q15', label="Security Question 3")
     security_answer_3 = forms.CharField(required=True, label="Answer to Security Question 3")
 
     class Meta:
