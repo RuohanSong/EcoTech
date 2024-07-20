@@ -34,6 +34,7 @@
             padding: 20px;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
         }
 
         .article-content p {
@@ -41,17 +42,70 @@
             line-height: 1.6;
             color: #444;
         }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #007bff;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .attached-file {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        .attached-file img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .attached-file a {
+            text-decoration: none;
+            color: #007bff;
+        }
+
+        .attached-file a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
+    {% load custom_filters %} <!-- Load the custom filter here -->
     <div class="article-header">
         <h1>{{ article.title }}</h1>
         <p>Author: {{ article.author }}</p>
     </div>
     <div class="article-content">
         <p>{{ article.content }}</p>
-        <!-- Add other article details as needed -->
     </div>
+    
+    {% if article.document %}
+    <div class="attached-file">
+        {% if article.document.url|is_image %}
+            <p>Attached Image:</p>
+            <img src="{{ article.document.url }}" alt="Attached Image" style="max-width: 100%;">
+        {% else %}
+            <p>Attached Document:</p>
+            <a href="{{ article.document.url }}" download>{{ article.document.name }}</a>
+        {% endif %}
+    </div>
+    {% endif %}
+    
+    {% if article.link %}
+    <div class="article-link">
+        <p>Related Link:</p>
+        <a href="{{ article.link }}" target="_blank">{{ article.link }}</a>
+    </div>
+    {% endif %}
+    
     <a href="{% url 'contents:article_list' %}" class="back-link">Back to Article List</a>
 </body>
 </html>
