@@ -322,6 +322,7 @@ margin-bottom: 5rem;
     position: absolute;
 }
 
+
 /*-----CONTACT PAGE ANIMATION------*/
 
 /*Animated background*/
@@ -624,4 +625,28 @@ margin-bottom: 5rem;
 
 .article-list li {
     margin-bottom: 20px; /* Add space between each article */
+}
+
+
+/*----VIEW PROFILE----*/
+/* core/style.css */
+.header {
+    position: fixed; /* or absolute, depending on your layout needs */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Ensure the header is above other content */
+    background-color: #fff; /* Background color to ensure readability */
+}
+
+.profile-container {
+    margin-top: 80px; /* Adjust this value based on your header height */
+    padding: 20px; /* Add padding for spacing */
+}
+
+.profile-box {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 0.375rem;
+    padding: 20px;
 }

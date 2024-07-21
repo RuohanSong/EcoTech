@@ -45,6 +45,7 @@ body {
     padding: 10px;
     border-radius: 5px;
     margin-bottom: 10px;
+    font-size: 1.5rem;
 }
 
 .profile-box a {
@@ -57,21 +58,61 @@ body {
 }
 
 .profile-box .btn-primary {
-    background-color: #4CAF50;
+    background-color: #68836a;
     border: none;
     width: 100%;
+    margin-top: 20px; /* Add spacing above the button */
+    padding: 12px 20px; /* Adjust padding to increase button size */
+    font-size: 18px; /* Increase font size */
 }
 
 .profile-box .btn-primary:hover {
-    background-color: #45a049;
+    background-color: #8eb892;
 }
 
 .form-control {
-    background-color: #333;
-    color: white;
+    background-color: floralwhite;
+    color: black;
     border: none;
+    font-size: 16px; /* Ensures consistent font size */
 }
 
 .form-control::placeholder {
-    color: #ccc;
+    color: #e3e1e1;
+}
+
+.profile-box .form-group {
+    margin-bottom: 15px; /* Adds spacing between form fields */
+}
+
+.profile-box .form-group label {
+    font-size: 16px; /* Ensures consistent font size for labels */
+}
+
+.profile-box .form-group input {
+    padding: 10px;
+    border-radius: 5px;
+}
+.profile-box .form-group input,
+.profile-box .form-group textarea {
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px; /* Ensures consistent font size for input fields */
+}
+
+.profile-box .form-group textarea {
+    resize: vertical; /* Allows vertical resizing of the textarea */
+}
+
+/* users/user_profile.css */
+.btn-primary {
+    background-color: #81a684;
+    border-color: #81a684;
+    padding: 12px 20px; /* Adjust padding to increase button size */
+    font-size: 18px; /* Increase font size */
+}
+
+.btn-primary:hover {
+    background-color: #8eb892;
+    border-color: #81a684;
 }
