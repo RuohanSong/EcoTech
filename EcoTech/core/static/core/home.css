@@ -1,0 +1,22 @@
+    .btn {
+        background-color: #81a684;
+        color: white;
+        padding: 10px 20px;
+        text-decoration: none;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        display: inline-block;
+    }
+
+    .btn a {
+        color: white; /* Ensures the link text inside the button is white */
+        text-decoration: none;
+    }
+
+    .btn:hover a{
+        background: transparent;
+        color:#81a684;
+        font-weight: bold;
+        border-color: #81a684;
+    }

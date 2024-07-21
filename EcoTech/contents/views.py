@@ -1,14 +1,18 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 
 from .models import *
 from .forms import *
 
+@login_required(login_url='users:login')
 def upload_article(request):
     if request.method == "POST":
         form = ArticleForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            article = form.save(commit=False)
+            article.uploaded_by = request.user
+            article.save()
             return redirect('contents:article_list')
     else:
         form = ArticleForm()

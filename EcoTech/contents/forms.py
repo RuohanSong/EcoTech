@@ -4,7 +4,7 @@ from .models import *
 class ArticleForm(forms.ModelForm):
     class Meta:
         model = Article
-        fields = ['title', 'content', 'author', 'document', 'link']
+        fields = ['title', 'content', 'document', 'link']
 
 class ArticleSearchForm(forms.Form):
     title = forms.CharField(max_length=200, required=False)

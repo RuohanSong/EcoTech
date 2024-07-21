@@ -5,7 +5,7 @@ from users.models import Member
 # Create your models here.
 
 class Article(models.Model):
-    # uploaded_by = models.ForeignKey(Member, on_delete=models.CASCADE)
+    uploaded_by = models.ForeignKey(Member, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     content = models.TextField()
     author = models.CharField(max_length=100)

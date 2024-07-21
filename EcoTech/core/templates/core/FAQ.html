@@ -1,23 +1,11 @@
 {% extends 'core/base.html' %}
 
-{% block title %}EcoTech | About Us{% endblock %}
+{% block title %}EcoTech - Empowering Sustainable Innovation{% endblock %}
 
 {% load static %}
 
 {% block extra_css %}
-<style>
-    .home-content h1 {
-        font-size: 2.5em;
-        font-weight: bold;
-    }
-    .question h3 {
-        font-size: 2em;
-        font-weight: bold;
-    }
-    .question p, .question ul {
-        font-size: 1.5em;
-    }
-</style>
+    <link rel="stylesheet" href="{% static 'core/FAQ.css' %}" />
 {% endblock %}
 
 {% block content %}
