@@ -18,22 +18,27 @@ class UserProfileAdmin(admin.ModelAdmin):
 
     def get_first_name(self, obj):
         return obj.user.first_name
+
     get_first_name.short_description = 'First Name'
 
     def get_last_name(self, obj):
         return obj.user.last_name
+
     get_last_name.short_description = 'Last Name'
 
     def get_username(self, obj):
         return obj.user.username
+
     get_username.short_description = 'Username'
 
     def get_city(self, obj):
         return obj.user.city
+
     get_city.short_description = 'City'
 
     def get_country(self, obj):
         return obj.user.country
+
     get_country.short_description = 'Country'
 
     get_first_name.admin_order_field = 'user__first_name'
@@ -42,7 +47,15 @@ class UserProfileAdmin(admin.ModelAdmin):
     get_city.admin_order_field = 'user__city'
     get_country.admin_order_field = 'user__country'
 
+
+class UserHistoryAdmin(admin.ModelAdmin):
+    list_display = ('user', 'visit_date', 'visit_count')
+    list_filter = ('visit_date',)
+    search_fields = ('user__username', 'visit_date')
+
+
 # Register your models here.
 admin.site.register(Member, MemberAdmin)
 admin.site.register(SecurityQuestions)
 admin.site.register(UserProfile, UserProfileAdmin)
+admin.site.register(UserHistory, UserHistoryAdmin)

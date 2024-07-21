@@ -1,5 +1,6 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django.utils import timezone
 
 
 class Member(AbstractUser):
@@ -42,3 +43,12 @@ class UserProfile(models.Model):
 
     def __str__(self):
         return f'{self.user.username} Profile'
+
+
+class UserHistory(models.Model):
+    user = models.ForeignKey(Member, on_delete=models.CASCADE)
+    visit_date = models.DateField(default=timezone.now)
+    visit_count = models.PositiveIntegerField(default=1)
+
+    def __str__(self):
+        return f"{self.user.username} - {self.visit_date} - {self.visit_count}"

@@ -3,7 +3,6 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, authenticate, logout
 
 from django.contrib.auth.decorators import login_required
-from .models import *
 from .forms import *
 
 
@@ -167,3 +166,10 @@ def edit_profile(request, username):
         form = UserProfileForm(instance=user_profile)
 
     return render(request, 'users/edit_profile.html', {'form': form, 'user_profile': user_profile})
+
+@login_required
+def total_visits_view(request):
+    context = {
+        'global_visit_count': request.session.get('total_visits', 0)
+    }
+    return render(request, 'users/total_visits.html', context)
