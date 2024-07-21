@@ -30,6 +30,7 @@
       <!-- show the user's name and a dropdown menu with multiple user features such as logout on the top right corner -->
         <nav class="navbar">
           <a href="{% url 'contents:upload_article' %}">Post</a>
+          <a href="{% url 'contents:article_list' %}">Articles</a>
           <a href="{% url 'users:view_profile' user.username %}">Your Profile</a>
           <a href="{% url 'users:logout' %}">Log Out</a>
         </nav>

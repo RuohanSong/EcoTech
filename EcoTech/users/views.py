@@ -61,8 +61,7 @@ def login_view(request):
             return redirect('contents:article_list')  # redirect to user dashboard later
         else:
             form = LoginForm()
-
-    return render(request, 'users/login.html', {'form': form})
+            return render(request, 'users/login.html', {'form': form})
 
 
 def logout_view(request):

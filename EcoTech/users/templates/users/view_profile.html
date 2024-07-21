@@ -23,6 +23,8 @@
         <p><strong>Country:</strong> {{ user_profile.user.country }}</p>
         <p><strong>Bio:</strong> {{ user_profile.bio }}</p>
     </div>
-    <a href="{% url 'users:edit_profile' user.username %}">Edit profile</a>
+
+        <a href="{% url 'users:edit_profile' user.username %}">Edit profile</a>
+
 </div>
 {% endblock %}
