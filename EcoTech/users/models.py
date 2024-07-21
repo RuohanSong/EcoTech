@@ -34,7 +34,6 @@ class SecurityQuestions(models.Model):
         return dict(self.QUESTION_CHOICES).get(question_code, question_code)
 
 
-
 class UserProfile(models.Model):
     user = models.OneToOneField(Member, on_delete=models.CASCADE)
     bio = models.TextField(blank=True, null=True)
