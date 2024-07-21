@@ -5,7 +5,19 @@
 {% load static %}
 
 {% block extra_css %}
-
+<style>
+    .home-content h1 {
+        font-size: 2.5em;
+        font-weight: bold;
+    }
+    .question h3 {
+        font-size: 2em;
+        font-weight: bold;
+    }
+    .question p, .question ul {
+        font-size: 1.5em;
+    }
+</style>
 {% endblock %}
 
 {% block content %}
@@ -13,48 +25,50 @@
     <section class="home" id="home">
       <div class="home-content">
         <h1>Frequently Asked Questions</h1>
-          <br />
-          <div class="question">
-            <h3>Who can benefit from using EcoTech Connect?</h3>
+        <br />
+        <div class="question">
+          <h3>Who can benefit from using EcoTech Connect?</h3>
           <br />
           <p>
-        EcoTech Connect is a valuable resource for anyone interested in sustainability, regardless of  background or experience level. Whether you're a homeowner looking for ways to green your lifestyle, a business owner seeking to implement sustainable practices, or a student exploring the field of environmental technology, EcoTech Connect has something for you.
+            EcoTech Connect is a valuable resource for anyone interested in sustainability, regardless of background or experience level. Whether you're a homeowner looking for ways to green your lifestyle, a business owner seeking to implement sustainable practices, or a student exploring the field of environmental technology, EcoTech Connect has something for you.
           </p>
-          </div>
-          <br />
+        </div>
+        <br />
 
-          <div class="question">
-        <h3>What kind of information can I find on EcoTech Connect?</h3>
+        <div class="question">
+          <h3>What kind of information can I find on EcoTech Connect?</h3>
           <br />
           <p>Our platform offers a diverse range of content, including:</p>
           <ul>
               <li>Articles covering the latest advancements in sustainable technologies.</li>
-      <li>Videos showcasing success stories and practical applications of green solutions.</li>
-      <li>Resources like downloadable guides, white papers, and infographics.</li>
-      <li>Features to share your knowledge and information</li>
-    </ul></div>
-          <br />
+              <li>Videos showcasing success stories and practical applications of green solutions.</li>
+              <li>Resources like downloadable guides, white papers, and infographics.</li>
+              <li>Features to share your knowledge and information.</li>
+          </ul>
+        </div>
+        <br />
 
-           <div class="question">
-        <h3>Do I need to register to use EcoTech Connect?</h3>
+        <div class="question">
+          <h3>Do I need to register to use EcoTech Connect?</h3>
           <br />
           <p>Registration is free and unlocks additional features like saving favorite articles, participating in discussions, and accessing exclusive content.
-          </p></div>
-          <br />
+          </p>
+        </div>
+        <br />
 
-          <div class="question">
-        <h3>How can I get involved in the EcoTech Connect community?</h3>
+        <div class="question">
+          <h3>How can I get involved in the EcoTech Connect community?</h3>
           <br />
           <p>There are several ways to connect with the EcoTech Connect community:</p>
           <ul>
-              <li>Explore our discussion forums and share your thoughts and questions</li>
-      <li>Follow us on social media for updates and engage in conversations.</li>
-      <li>Resources like downloadable guides, white papers, and infographics.</li>
-      <li>Attend online events and webinars hosted by EcoTech Connect and our partners.</li>
-    </ul></div>
-          <br />
+              <li>Explore our discussion forums and share your thoughts and questions.</li>
+              <li>Follow us on social media for updates and engage in conversations.</li>
+              <li>Attend online events and webinars hosted by EcoTech Connect and our partners.</li>
+          </ul>
+        </div>
+        <br />
 
-          <button class="btn"><a href="{% url 'users:signup' %}">Join Us!</a></button>
+        <button class="btn"><a href="{% url 'users:signup' %}">Join Us!</a></button>
       </div>
-        </section>
+    </section>
 {% endblock %}

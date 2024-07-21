@@ -1,3 +1,5 @@
+from datetime import timedelta, timezone
+
 from django.contrib import messages
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, authenticate, logout
@@ -18,29 +20,22 @@ def signup_view(request):
             authenticated_member = authenticate(username=username, password=password)
             if authenticated_member:
                 print('Account created successfully')
-                messages.success(request, 'Account created successfully')
+                messages.success(request, 'Account created successfully!')
                 return redirect('users:login')    # redirect to the user login page
             else:
                 print('Invalid email or password')
-                messages.error(request, 'Invalid email or password')
-                # form = SignUpForm()
-                # return render(request, 'users/signup.html', {'form': form, 'error_message': 'Invalid email or password'})
+                messages.error(request, 'Invalid email or password!')
+                return redirect('users:signup')     # make sure to render a new empty form
         else:
             print('Form is not valid')
-            messages.error(request, 'Form is not valid')
-            # form = SignUpForm()
-            # return render(request, 'users/signup.html', {'form': form, 'error_message': 'Invalid email or password! Please try again'})
+            messages.error(request, 'Form is not valid!')
+            return redirect('users:signup')
     else:
-        print('refreshing')
         form = SignUpForm()
-
-    return render(request, 'users/signup.html', {'form': form})
+        return render(request, 'users/signup.html', {'form': form})
 
 
 def login_view(request):
-    if request.user.is_authenticated:
-        return redirect('contents:article_list')    # redirect to user dashboard later
-
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
@@ -50,20 +45,23 @@ def login_view(request):
             authenticated_user = authenticate(request, username=username, password=password)
             if authenticated_user is not None:
                 login(request, authenticated_user)
+                # request.session['last_login'] = str(timezone.now())
+                # request.session.set_expiry(120)
                 return redirect('contents:article_list')    # redirect to user dashboard later
             else:
-                error_message = 'Invalid username or password!<br>Please try again!'
-                print("Authentication failed: Invalid credentials")
-                form = LoginForm()
-                return render(request, 'users/login.html', {'form': form, 'error': error_message})
+                print(f"user: {username}, {password}")
+                messages.error(request, 'Invalid email or password!')
+                return redirect('users:login')
         else:
             print("Form is not valid")
-            print(form.errors)
+            messages.error(request, 'Form is not valid!')
+            return redirect('users:login')
+    else:
+        if request.user.is_authenticated:
+            return redirect('contents:article_list')  # redirect to user dashboard later
+        else:
             form = LoginForm()
             return render(request, 'users/login.html', {'form': form})
-    else:
-        form = LoginForm()
-        return render(request, 'users/login.html', {'form': form})
 
 
 def logout_view(request):
@@ -76,11 +74,16 @@ def password_forgot_view(request):
         form = PasswordForgotForm(request.POST)
         if form.is_valid():
             email = form.cleaned_data.get('email')
-            member = get_object_or_404(Member, email=email)
-            request.session['member_email'] = email
-            return redirect('users:security_questions')
+            try:
+                member = get_object_or_404(Member, email=email)
+                request.session['member_email'] = email
+                return redirect('users:security_questions')
+            except Exception:
+                messages.error(request, 'The email does not exist.')
+                return redirect('users:password_forgot')
         else:
             messages.error(request, 'Invalid email!')
+            return redirect('users:password_forgot')
     else:
         form = PasswordForgotForm()
     return render(request, 'users/password_forgot.html', {'form': form})
