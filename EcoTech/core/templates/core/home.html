@@ -23,31 +23,31 @@
       and discover innovative solutions for businesses and individuals.
     </p>
     <br />
-    <button class="btn"><a href="{% url 'core:about' %}">Learn More</a></button>
+    <button class="btn"><a href="{% url 'users:signup' %}">Learn More</a></button>
   </div>
 
   <!-- Benefits Section Design -->
   <section class="benefits" id="benefits">
-    <h2 class="heading">Benefits of joining <span>EcoTech Connect</span></h2>
+    <h2 class="heading">New Contributions To <span>A Green Future</span></h2>
     <div class="benefits-container">
       <div class="benefits-box">
-        <p>Sign Up to access exclusive content and resources</p>
+        <p><span class="history-number">{{ num_article }}</span> exclusive contents and resources have been created</p>
       </div>
 
       <div class="benefits-box">
-        <p>Stay updated on the latest sustainability trends</p>
+        <p><span class="history-number">{{ daily_visits }}</span> visitors today got updated on the latest sustainability trends</p>
       </div>
 
       <div class="benefits-box">
-        <p>Connect with a community of like-minded individuals and businesses</p>
+        <p><span class="history-number">{{ num_member }}</span> members have been connected within a green community</p>
       </div>
       <div class="benefits-box">
-        <p>Contribute to a greener future</p>
+        <p><span class="history-number">{{ num_comment }}</span> insights have been exchanged between like-minded individuals and businesses</p>
       </div>
     </div>
 
     <div class="benefits-btn">
-      <button class="btn"><a href="{% url 'users:signup' %}">Sign Up Now</a></button>
+      <button class="btn"><a href="{% url 'users:signup' %}">Join Us Now</a></button>
     </div>
   </section>
 
@@ -72,11 +72,6 @@
         <input type="submit" value="Get Updates" class="btn" />
       </form>
     </section>
-
-        <h1>Visit Tracker</h1>
-        <p>Daily Visits: {{ daily_visits }}</p>
-<!--        <p>Total Visits: {{ total_visits }}</p>-->
-        <p>Article Created: {{ num_article }}</p>
 
     </section>
 {% endblock %}
