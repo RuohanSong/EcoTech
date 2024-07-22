@@ -1,7 +1,8 @@
 {% extends 'core/base.html' %}
 
-{% block title %}EcoTech | Article List{% endblock %}
+{% block title %}Article List - EcoTech{% endblock %}
 
+{% load custom_filters %}
 {% load static %}
 
 {% block extra_css %}
@@ -22,7 +23,7 @@
         </div>
 
         <div class="container">
-            <h2>List of Articles</h2>
+            <h2 class="heading">Recommended For <span>You!</span></h2>
 
             <div class="search-form">
                 <form method="get">
@@ -32,15 +33,23 @@
             </div>
 
             {% if articles %}
-                <ul class="article-list">
-                    {% for article in articles %}
-                        <li>
-                            <span class="article-title">Article title:</span>
-                            <a href="{% url 'contents:article_detail' article.id %}">{{ article.title }}</a>
-                            <span class="article-author"> by {{ article.uploaded_by.first_name }} {{ article.uploaded_by.last_name }}</span>
-                        </li>
-                    {% endfor %}
-                </ul>
+                {% for article in articles %}
+                    <div class="card mb-3">
+                        {% if article.document %}
+                            {% if article.document.url|is_image %}
+                                <a href="{% url 'contents:article_detail' article.id %}">
+                                    <img src="{{ article.document.url }}" class="card-img-top" alt="Attached Image" style="max-width: 100%;">
+                                </a>
+                            {% endif %}
+                        {% endif %}
+                        <div class="card-body">
+                            <h3 class="card-title">
+                                <a class="link-underline-light link-underline-opacity-0 text-reset" href="{% url 'contents:article_detail' article.id %}">{{ article.title }}</a>
+                            </h3>
+                            <p class="card-text"><small class="text-body-secondary">Published on {{ article.created_at }}</small></p>
+                        </div>
+                    </div>
+                {% endfor %}
             {% else %}
                 <p>No articles found.</p>
             {% endif %}

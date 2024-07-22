@@ -8,10 +8,11 @@
         .article-header {
             background-color: #fff;
             padding-top: 20px;
-            border-radius: 5px;
+            padding-bottom: 20px;
+            border-radius: 0px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
-            padding-left: 30px;
+            margin-bottom: 0px;
+            padding-left: 40px;
             padding-right: 20px;
 
         }
@@ -29,9 +30,11 @@
         .article-content {
             background-color: #fff;
             padding-top: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             padding-bottom: 20px;
+            padding-left: 20px;
+            padding-right: 20px;
+            border-radius: 0px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
         .article-content p {

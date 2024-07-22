@@ -25,3 +25,20 @@
         font-weight: bold;
         font-size: 150%;
     }
+
+    .recommended-articles {
+        min-height: unset;
+    }
+
+    .container {
+        max-width: fit-content;
+        font-size: larger;
+    }
+
+    .card {
+        height: 100%;
+    }
+
+    .newsletter {
+        min-height: unset;
+    }

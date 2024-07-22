@@ -12,17 +12,17 @@
 
 {% block content %}
     <div class="article-header">
-        <h1>{{ article.title }}</h1>
-        <p>Author: {{ article.author }}</p>
-        <p>Uploaded by: {{ article.uploaded_by.first_name }} {{ article.uploaded_by.last_name }}</p>
-        <p>Posted on: {{ article.created_at }}</p>
+        <p class="fs-2 fw-bolder">{{ article.title }}</p>
+        <p class="fw-lighter">Published on {{ article.created_at }}</p>
+        <p class="fst-italic">By {{ article.uploaded_by.first_name }} {{ article.uploaded_by.last_name }}</p>
     </div>
+
     <div class="article-content">
-        <p>{{ article.content }}</p>
+        <p class="fst-normal lh-lg">{{ article.content }}</p>
     </div>
 
     {% if article.document %}
-        <div class="attached-file">
+        <div class="attached-content">
             {% if article.document.url|is_image %}
                 <img src="{{ article.document.url }}" alt="Attached Image" style="max-width: 100%;">
             {% else %}
@@ -33,9 +33,10 @@
     {% endif %}
 
     {% if article.link %}
-        <div class="article-link">
-            <p>Related Link:</p>
-            <a href="{{ article.link }}" target="_blank">{{ article.link }}</a>
+        <div class="article-content">
+            <p>Related Link:
+                <a class="link-opacity-50-hover" href="{{ article.link }}" target="_blank">{{ article.link }}</a>
+            </p>
         </div>
     {% endif %}
 

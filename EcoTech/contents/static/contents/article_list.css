@@ -1,11 +1,9 @@
         .container {
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
-
-            padding-top: 9.5rem;
-            margin: 0 auto;
-            max-width: 600px;
+            align-items: center;
+            padding-top: 15rem;
+            margin: auto;
         }
 
         .container h2{
@@ -14,7 +12,7 @@
         .search-form {
             margin-bottom: 20px;
             width: 100%;
-            font-size:1.3rem;
+            font-size:1rem;
         }
         .search-form form {
             display: flex;
@@ -107,4 +105,9 @@
         @keyframes animate {
             0% { transform: translateY(0) rotate(0deg); opacity: 1; border-radius: 0; }
             100% { transform: translateY(-1000px) rotate(720deg); opacity: 0; border-radius: 50%; }
+        }
+
+        .card {
+            width: inherit;
+            margin: 10px;
         }
