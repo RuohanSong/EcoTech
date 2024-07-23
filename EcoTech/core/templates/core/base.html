@@ -32,7 +32,8 @@
         <nav class="navbar">
           <a href="{% url 'contents:upload_article' %}">Post</a>
           <a href="{% url 'contents:article_list' %}">Articles</a>
-          <a href="{% url 'users:view_profile' user.username %}">Your Profile</a>
+          <a href="{% url 'users:view_profile' user.username %}">Profile</a>
+          <a href="{% url 'users:edit_profile' user.username %}">Edit Profile</a>
           <a href="{% url 'users:logout' %}">Log Out</a>
         </nav>
 

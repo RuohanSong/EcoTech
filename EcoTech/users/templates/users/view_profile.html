@@ -1,6 +1,6 @@
 {% extends 'core/base.html' %}
 
-{% block title %}{{ user_profile.user.first_name }}'s Profile{% endblock %}
+{% block title %}{{ user_profile.user.first_name }} {{ user_profile.user.last_name }}'s Profile - EcoTech{% endblock %}
 
 {% load static %}
 
@@ -23,6 +23,5 @@
         <p><strong>Country:</strong> {{ user_profile.user.country }}</p>
         <p><strong>Bio:</strong> {{ user_profile.bio }}</p>
     </div>
-    <a href="{% url 'users:edit_profile' user.username %}" class="btn btn-primary">Edit Profile</a>
 </div>
 {% endblock %}

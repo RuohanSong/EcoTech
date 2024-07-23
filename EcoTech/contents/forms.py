@@ -13,9 +13,11 @@ class ArticleSearchForm(forms.Form):
 
 
 class CommentForm(forms.ModelForm):
+    content = forms.CharField(
+        required=True,
+        label="Add a comment",
+        widget=forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Enter your comment...'})
+    )
     class Meta:
         model = Comment
         fields = ['content']
-        widgets = {
-            'content': forms.Textarea(attrs={'rows': 4, 'placeholder': 'Enter your comment...'}),
-        }
