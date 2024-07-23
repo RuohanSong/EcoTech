@@ -15,6 +15,7 @@
         <h2>Edit Profile for {{ user_profile.user.first_name }}</h2>
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
+
             <div class="form-group">
                 <label for="first_name">First Name</label>
                 <input type="text" class="form-control" id="first_name" name="first_name" value="{{ user_profile.user.first_name }}">
@@ -31,16 +32,23 @@
                 <label for="city">City</label>
                 <input type="text" class="form-control" id="city" name="city" value="{{ user_profile.user.city }}">
             </div>
-
-            <div class="form-group">
-                <label for="bio">Bio</label>
-                <textarea class="form-control" id="bio" name="bio" rows="3">{{ user_profile.bio }}</textarea>
-            </div>
             <div class="form-group">
                 <label for="country">Country</label>
                 <input type="text" class="form-control" id="country" name="country" value="{{ user_profile.user.country }}">
             </div>
-            {{ form.as_p }}
+            <div class="form-group">
+                <label for="bio">Bio</label>
+                <textarea class="form-control" id="bio" name="bio" rows="3">{{ user_profile.bio }}</textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="profile_pic">Profile Picture</label>
+                <input type="file" class="form-control" id="profile_pic" name="profile_pic">
+                {% if user_profile.profile_pic %}
+                    <img src="{{ user_profile.profile_pic.url }}" alt="{{ user_profile.user.username }}'s profile picture" class="img-thumbnail mt-2" style="width: 150px; height: auto;">
+                {% endif %}
+            </div>
+
             <button type="submit" class="btn btn-primary">Save changes</button>
         </form>
     </div>

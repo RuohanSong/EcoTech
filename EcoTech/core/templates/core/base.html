@@ -30,6 +30,7 @@
       {% if user.is_authenticated %}
       <!-- show the user's name and a dropdown menu with multiple user features such as logout on the top right corner -->
         <nav class="navbar">
+          <a href="{% url 'core:home' %}" class="active">Home</a>
           <a href="{% url 'contents:upload_article' %}">Post</a>
           <a href="{% url 'contents:article_list' %}">Articles</a>
           <a href="{% url 'users:view_profile' user.username %}">Profile</a>
@@ -51,20 +52,17 @@
     </header>
 
     <!-- Main Content -->
-    {% block content%}
+    <div class="site-container">
+        {% block content%}
 
-    {% endblock %}
+        {% endblock %}       
+    </div>
+
     
     <!--footer design-->
     <footer class="footer">
       <div class="footer-text">
         <p>EcoTech Connect 2024 | All Rights Reserved</p>
-      </div>
-
-      <div class="social-media">
-        <a href="https://www.facebook.com/ecotechconnect">Facebook</a>
-        <a href="https://www.x.com/ecotechconnect">Twitter</a>
-        <a href="https://www.linkedin.com/ecotechconnect">LinkedIn</a>
       </div>
 
       <div class="footer-links">

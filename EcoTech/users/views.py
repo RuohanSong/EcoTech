@@ -6,6 +6,7 @@ from django.contrib.auth import login, authenticate, logout
 
 from django.contrib.auth.decorators import login_required
 from .models import *
+from contents.models import *
 from .forms import *
 
 
@@ -148,7 +149,12 @@ def password_reset_done_view(request):
 
 def view_profile(request, username):
     user_profile = get_object_or_404(UserProfile, user__username=username)
-    return render(request, 'users/view_profile.html', {'user_profile': user_profile})
+    user_articles = Article.objects.filter(uploaded_by=user_profile.user)
+    context = {
+        'user_profile': user_profile,
+        'user_articles': user_articles,
+    }
+    return render(request, 'users/view_profile.html', context)
 
 
 def edit_profile(request, username):
@@ -170,3 +176,4 @@ def edit_profile(request, username):
         form = UserProfileForm(instance=user_profile)
 
     return render(request, 'users/edit_profile.html', {'form': form, 'user_profile': user_profile})
+
