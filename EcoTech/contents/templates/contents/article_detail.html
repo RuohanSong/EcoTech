@@ -2,7 +2,6 @@
 
 {% block title %}EcoTech - {{ article.title }}{% endblock %}
 {% load custom_filters %}  
-
 {% load static %}
 
 {% block extra_css %}
@@ -18,31 +17,29 @@
     </div>
 
     <div class="article-content">
-        <p class="fst-normal lh-lg">{{ article.content }}</p>
+        <div class="fst-normal lh-lg">{{ article.content|linebreaks }}</div>
 
-    {% if article.document %}
+        {% if article.document %}
             {% if article.document.url|is_image %}
                 <img src="{{ article.document.url }}" alt="Attached Image" class="img-fluid rounded mx-auto d-block" style="max-width: 100%;">
             {% else %}
                 <p>Attached Document:</p>
                 <a href="{{ article.document.url }}" download>{{ article.document.name }}</a>
             {% endif %}
-    {% endif %}
+        {% endif %}
 
-    {% if article.link %}
+        {% if article.link %}
             <p style="margin-top: 20px">Related Link:
                 <a class="link-opacity-50-hover" href="{{ article.link }}" target="_blank">{{ article.link }}</a>
             </p>
-    {% endif %}
+        {% endif %}
 
-    <div class="d-grid gap-2 col-6 mx-auto">
-        <button class="btn">
-            <a href="{% url 'contents:article_list' %}" class="back-link">Back to Article List</a>
-        </button>
+        <div class="d-grid gap-2 col-6 mx-auto">
+            <button class="btn">
+                <a href="{% url 'contents:article_list' %}" class="back-link">Back to Article List</a>
+            </button>
+        </div>
     </div>
-
-    </div>
-
 
     <div class="article-header">
         <h2>Comments</h2>
@@ -55,19 +52,15 @@
     </div>
 
     <div class="article-header">
-    {% if user.is_authenticated %}
-        <h3>Your comment</h3>
-        <form method="POST">
-            {% csrf_token %}
-            {{ comment_form.as_p }}
-            <button class="btn" type="submit" style="margin-left: 0; margin-top: 5px">Submit</button>
-        </form>
-    {% else %}
-        <p>You must log in to add a comment. <a href="{% url 'users:login' %}">Log in here</a></p>
-    {% endif %}
+        {% if user.is_authenticated %}
+            <h3>Your comment</h3>
+            <form method="POST">
+                {% csrf_token %}
+                {{ comment_form.as_p }}
+                <button class="btn" type="submit" style="margin-left: 0; margin-top: 5px">Submit</button>
+            </form>
+        {% else %}
+            <p>You must log in to add a comment. <a href="{% url 'users:login' %}">Log in here</a></p>
+        {% endif %}
     </div>
-
 {% endblock %}
-
-</body>
-</html>
