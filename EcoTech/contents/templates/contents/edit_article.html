@@ -1,0 +1,47 @@
+<!-- contents/templates/contents/edit_article.html -->
+{% extends 'core/base.html' %}
+
+{% block title %}Edit Article - EcoTech{% endblock %}
+
+{% load static %}
+
+{% block extra_css %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'contents/upload_article.css' %}" />
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4">Edit Article</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <!-- Title Field -->
+        <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" class="form-control" id="title" name="title" placeholder="Article Title" value="{{ form.title.value }}" required>
+        </div>
+
+        <!-- Content Field -->
+        <div class="mb-3">
+            <label for="content" class="form-label">Content</label>
+            <textarea class="form-control" id="content" name="content" rows="5" placeholder="Article Content" required>{{ form.content.value }}</textarea>
+        </div>
+
+        <!-- Link Field -->
+        <div class="mb-3">
+            <label for="link" class="form-label">Link</label>
+            <input type="text" class="form-control" id="link" name="link" placeholder="Paste the link here" value="{{ form.link.value }}">
+        </div>
+
+        <!-- Document Upload -->
+        <div class="mb-3">
+            <label for="document" class="form-label">Upload Document</label>
+            <input type="file" class="form-control" id="document" name="document">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+    </form>
+    <a href="{% url 'contents:article_list' %}" class="btn btn-secondary mt-2">Cancel</a>
+</div>
+{% endblock %}

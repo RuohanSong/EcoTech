@@ -72,4 +72,32 @@ def article_detail(request, pk):
     }
     return render(request, 'article_detail.html', context)
 
+@login_required(login_url='users:login')
+def edit_article(request, pk):
+    article = get_object_or_404(Article, pk=pk)
+    if request.method == 'POST':
+        form = ArticleForm(request.POST, request.FILES, instance=article)
+        if form.is_valid():
+            form.save()
+            return redirect('contents:article_detail', pk=article.pk)
+    else:
+        form = ArticleForm(instance=article)
+    return render(request, 'edit_article.html', {'form': form, 'article': article})
+
+@login_required(login_url='users:login')
+def delete_article(request, pk):
+    article = get_object_or_404(Article, pk=pk)
+    if request.method == 'POST':
+        article.delete()
+        return redirect('contents:article_list')
+    return render(request, 'confirm_delete.html', {'article': article})
+
+@login_required(login_url='users:login')
+def confirm_delete_article(request, pk):
+    article = get_object_or_404(Article, pk=pk)
+    if request.method == 'POST':
+        article.delete()
+        return render(request, 'contents/delete_article.html')
+    return render(request, 'contents/confirm_delete.html', {'article': article})
+
 
