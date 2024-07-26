@@ -5,6 +5,17 @@ from users.models import Member
 # Create your models here.
 
 class Article(models.Model):
+    CATEGORY_CHOICES = [
+        ('clean_energy', 'Clean Energy'),
+        ('sustainable_innovation', 'Sustainable Innovation'),
+        ('agriculture', 'Agriculture'),
+        ('green_living', 'Green Living'),
+        ('climate', 'Climate'),
+        ('eco_design', 'Eco Design'),
+        ('animals', 'Animals'),
+    ]
+
+    category = models.CharField(max_length=50, choices=CATEGORY_CHOICES)
     uploaded_by = models.ForeignKey(Member, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     content = models.TextField()

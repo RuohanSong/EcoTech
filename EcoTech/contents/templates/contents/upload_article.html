@@ -22,6 +22,17 @@
             <input type="text" class="form-control" id="title" name="title" placeholder="Article Title" required>
         </div>
 
+        {#        Category Field#}
+        <div class="mb-3">
+            <label for="category" class="form-label">Category</label>
+            <select class="form-control" id="category" name="category" required>
+                <option value="" disabled selected>Select Category</option>
+                {% for value, label in form.category.field.choices %}
+                    <option value="{{ value }}">{{ label }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
         <!-- Content Field -->
         <div class="mb-3">
             <label for="content" class="form-label">Content</label>

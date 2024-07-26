@@ -19,19 +19,16 @@ def upload_article(request):
     return render(request, 'upload_article.html', {'form': form})
 
 def article_list(request):
-    articles = Article.objects.all().only('id', 'title').order_by('-created_at')
+    articles = Article.objects.all().only('id', 'title', 'category').order_by('-created_at')
     form = ArticleSearchForm(request.GET)
     if form.is_valid():
         title = form.cleaned_data.get('title')
-        author = form.cleaned_data.get('author')
-        created_at = form.cleaned_data.get('created_at')
+        category = form.cleaned_data.get('category')
 
         if title:
             articles = articles.filter(title__icontains=title)
-        if author:
-            articles = articles.filter(author__icontains=author)
-        if created_at:
-            articles = articles.filter(created_at__date=created_at)
+        if category:
+            articles = articles.filter(category=category)
 
     return render(request, 'article_list.html', {'articles': articles, 'form': form})
 

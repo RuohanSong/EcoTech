@@ -37,20 +37,18 @@
         <div class="col">
             <div class="card" style="width: inherit;">
                     {% if random_article_1 %}
-                        {% if random_article_1.document %}
-                            {% if random_article_1.document.url|is_image %}
                                 <a href="{% url 'contents:article_detail' random_article_1.id %}">
                                     <img src="{{ random_article_1.document.url }}" class="card-img-top" alt="Attached Image" style="max-width: 100%;">
                                 </a>
-                            {% endif %}
-                        {% endif %}
                         <div class="card-body">
                             <p class="card-text">
                                 <a class="link-underline-light link-underline-opacity-0 text-reset" href="{% url 'contents:article_detail' random_article_1.id %}">{{ random_article_1.title }}</a>
                             </p>
                         </div>
                     {% else %}
-                        <p>No articles found.</p>
+                        <div class="card-body">
+                            <p class="card-text">No articles found.</p>
+                        </div>
                     {% endif %}
             </div>
         </div>

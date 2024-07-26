@@ -11,21 +11,18 @@ from users.models import Member
 
 # Home page view- will load the default landing page
 def home_view(request):
-    # Get all articles
-    articles = Article.objects.all()
-
     # Filter articles to only include those with images
     articles_with_images = [
-        article for article in articles
+        article for article in Article.objects.all()
         if article.document and mimetypes.guess_type(article.document.url)[0].startswith('image')
     ]
 
     random.shuffle(articles_with_images)  # Shuffle the list
 
     # Ensure there are at least three articles
-    random_article_1 = articles_with_images[0] if len(articles) > 0 else None
-    random_article_2 = articles_with_images[1] if len(articles) > 1 else None
-    random_article_3 = articles_with_images[2] if len(articles) > 2 else None
+    random_article_1 = articles_with_images[0] if len(articles_with_images) > 0 else None
+    random_article_2 = articles_with_images[1] if len(articles_with_images) > 1 else None
+    random_article_3 = articles_with_images[2] if len(articles_with_images) > 2 else None
 
     daily_visits = request.COOKIES.get('daily_visits', 0)
     num_article = Article.objects.count()

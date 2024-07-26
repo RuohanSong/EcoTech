@@ -4,7 +4,10 @@ from .models import *
 class ArticleForm(forms.ModelForm):
     class Meta:
         model = Article
-        fields = ['title', 'content', 'document', 'link']
+        fields = ['title', 'category', 'content', 'document', 'link']
+        widgets = {
+            'category': forms.Select(attrs={'class': 'form-control'}),
+        }
 
 class ArticleSearchForm(forms.Form):
     title = forms.CharField(
@@ -12,6 +15,12 @@ class ArticleSearchForm(forms.Form):
         required=False,
         label='',
         widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Search in EcoTech'})
+    )
+    category = forms.ChoiceField(
+        choices=[('', 'All Categories')] + Article.CATEGORY_CHOICES,
+        required=False,
+        label='',
+        widget=forms.Select(attrs={'class': 'form-control'})
     )
 
 
