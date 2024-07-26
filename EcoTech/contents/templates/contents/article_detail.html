@@ -18,22 +18,23 @@
     </div>
 
     <div class="article-content">
-        <p class="fst-normal lh-lg">{{ article.content }}</p>
+        <div class="fst-normal lh-lg">{{ article.content|linebreaks }}</div>
 
-    {% if article.document %}
+
+        {% if article.document %}
             {% if article.document.url|is_image %}
                 <img src="{{ article.document.url }}" alt="Attached Image" class="img-fluid rounded mx-auto d-block" style="max-width: 100%;">
             {% else %}
                 <p>Attached Document:</p>
                 <a href="{{ article.document.url }}" download>{{ article.document.name }}</a>
             {% endif %}
-    {% endif %}
+        {% endif %}
 
-    {% if article.link %}
+        {% if article.link %}
             <p style="margin-top: 20px">Related Link:
                 <a class="link-opacity-50-hover" href="{{ article.link }}" target="_blank">{{ article.link }}</a>
             </p>
-    {% endif %}
+        {% endif %}
 
     <div class="d-grid gap-2 col-6 mx-auto">
         <button class="btn">
