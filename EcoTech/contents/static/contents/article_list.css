@@ -25,18 +25,7 @@
             border-radius: 5px;
             font-size: 1.3rem;
         }
-        .search-form button {
-            padding: 10px;
-            border: none;
-            background-color: var(--main-color);
-            color: white;
-            font-size: 1.4rem;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-        .search-form button:hover {
-            background-color: var(--text-color);
-        }
+
         .article-list {
             width: 100%;
             list-style-type: none;
@@ -46,11 +35,7 @@
             padding: 10px;
             border-bottom: 1px solid #ccc;
         }
-        .article-list a {
-            color: #0066cc;
-            text-decoration: none;
-            font-size: 1.5rem;
-        }
+
         .article-list a:hover {
             text-decoration: underline;
         }
@@ -111,3 +96,20 @@
             width: inherit;
             margin: 10px;
         }
+
+            .btn {
+        background-color: #81a684;
+        color: white;
+        padding: 10px 20px;
+        text-decoration: none;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        display: inline-block;
+    }
+
+    .btn:hover{
+        background: transparent;
+        color: #6a8e6d;
+        border-color: #6a8e6d;
+    }

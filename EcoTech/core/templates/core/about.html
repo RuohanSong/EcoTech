@@ -5,14 +5,36 @@
 {% load static %}
 
 {% block extra_css %}
+<style>
+    .btn {
+        background-color: #81a684;
+        color: white;
+        padding: 10px 20px;
+        text-decoration: none;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        display: inline-block;
+    }
 
+    .btn a {
+        color: white; /* Ensures the link text inside the button is white */
+        text-decoration: none;
+    }
+
+    .btn:hover a{
+        background: transparent;
+        color:#81a684;
+        font-weight: bold;
+        border-color: #81a684;
+    }
+</style>
 {% endblock %}
 
 {% block content %}
     <section class="home" id="home">
       <div class="home-content">
         <h1>Who are we?</h1>
-        <!--<h3>Empowering Sustainable Innovation</h3>-->
           <br />
           <p>
         EcoTech Connect is driven by the mission to empower individuals and businesses to embrace greener technologies. We envision a world where sustainable practices are not just the exception, but the norm. Our platform provides a wealth of information, resources, and tools to support your journey towards a more sustainable future.
@@ -21,6 +43,57 @@
         <br />
         Ready to join the movement? Explore our platform, discover innovative solutions, and register for an account to unlock exclusive features and connect with a like-minded community. Let's work together to build a more sustainable future for generations to come!
         </p>
+          <br />
+          <br />
+          <br />
+          
+          <h1>Team members</h1>
+          <br />
+          <h3>Ruohan Song</h3>
+          <p>
+        <br />
+              song.ruohan.nana@gmail.com
+        <br />
+              519-992-5309
+        <br />
+              www.linkedin.com/in/ruohan-song
+          </p>
+          <br />
+          
+          <br />
+          <h3>Kunal Kapoor</h3>
+          <p>
+        <br />
+              kapoor14@uwindsor.ca
+        <br />
+              437-984-9246
+        <br />
+              www.linkedin.com/in/kunalkapoor03/
+          </p>
+          <br />
+          
+          <br />
+          <h3>Sadia Anzum</h3>
+          <p>
+        <br />
+              anzums@uwindsor.ca
+        <br />
+              437-557-0075
+        <br />
+              www.linkedin.com/in/sadiaanzum2212
+          </p>
+          <br />
+          
+          <br />
+          <h3>Ravinder Kaur</h3>
+          <p>
+        <br />
+              ravinder.rkaur120@gmail.com
+        <br />
+              519-997-6537
+        <br />
+              www.linkedin.com/in/ravinder-kaur-573321229
+          </p>
           <br />
           <button class="btn"><a href="{% url 'users:signup' %}">Join Us!</a></button>
       </div>
