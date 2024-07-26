@@ -1,6 +1,6 @@
 {% extends 'core/base_no_headerfooter.html' %}
 
-{% block title %}EcoTech | Sign Up{% endblock %}
+{% block title %}Create Your EcoTech Account{% endblock %}
 
 {% load static %}
 
@@ -39,6 +39,9 @@
             </div>
         </div>
         <button type="submit" class="btn btn-success">Sign up</button>
+        <div class="small d-flex justify-content-center">
+            <a href="{% url 'core:home' %}">Go back to Home</a>
+        </div>
     </form>
 </div>
 {% endblock %}

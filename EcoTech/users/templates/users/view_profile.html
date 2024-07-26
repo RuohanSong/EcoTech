@@ -1,6 +1,6 @@
 {% extends 'core/base.html' %}
 
-{% block title %}{{ user_profile.user.first_name }}'s Profile{% endblock %}
+{% block title %}{{ user_profile.user.first_name }} {{ user_profile.user.last_name }}'s Profile - EcoTech{% endblock %}
 
 {% load static %}
 
@@ -22,7 +22,25 @@
         <p><strong>City:</strong> {{ user_profile.user.city }}</p>
         <p><strong>Country:</strong> {{ user_profile.user.country }}</p>
         <p><strong>Bio:</strong> {{ user_profile.bio }}</p>
+
+
+    <div class="user-articles", style="margin-top: 20px">
+        {% if user_articles %}
+            <h3>Articles published by {{ user_profile.user.first_name }} {{ user_profile.user.last_name }}</h3>
+            <div class="list-group">
+                {% for article in user_articles %}
+                    <a href="{% url 'contents:article_detail' article.id %}" class="list-group-item list-group-item-action">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1">{{ article.title }}</h5>
+                        </div>
+                        <small class="text-body-secondary">Published on {{ article.created_at }}</small>
+                    </a>
+                {% endfor %}
+        {% else %}
+            <p>{{ user_profile.user.first_name }} {{ user_profile.user.last_name }} has not published any articles.</p>
+        {% endif %}
+        </div>
     </div>
-    <a href="{% url 'users:edit_profile' user.username %}" class="btn btn-primary">Edit Profile</a>
+    </div>
 </div>
 {% endblock %}

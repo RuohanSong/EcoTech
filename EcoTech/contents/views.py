@@ -19,7 +19,7 @@ def upload_article(request):
     return render(request, 'upload_article.html', {'form': form})
 
 def article_list(request):
-    articles = Article.objects.all().only('id', 'title')
+    articles = Article.objects.all().only('id', 'title').order_by('-created_at')
     form = ArticleSearchForm(request.GET)
     if form.is_valid():
         title = form.cleaned_data.get('title')

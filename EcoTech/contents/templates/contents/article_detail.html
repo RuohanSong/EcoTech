@@ -1,6 +1,6 @@
 {% extends 'core/base.html' %}
 
-{% block title %}{{ article.title }}{% endblock %}
+{% block title %}EcoTech - {{ article.title }}{% endblock %}
 {% load custom_filters %}  
 
 {% load static %}
@@ -12,42 +12,43 @@
 
 {% block content %}
     <div class="article-header">
-        <h1>{{ article.title }}</h1>
-        <p>Author: {{ article.author }}</p>
-        <p>Uploaded by: {{ article.uploaded_by.first_name }} {{ article.uploaded_by.last_name }}</p>
-        <p>Posted on: {{ article.created_at }}</p>
-    </div>
-    <div class="article-content">
-        <p>{{ article.content }}</p>
+        <p class="fs-2 fw-bolder">{{ article.title }}</p>
+        <p class="fw-lighter">Published on {{ article.created_at }}</p>
+        <p class="fst-italic">By {{ article.uploaded_by.first_name }} {{ article.uploaded_by.last_name }}</p>
     </div>
 
+    <div class="article-content">
+        <p class="fst-normal lh-lg">{{ article.content }}</p>
+
     {% if article.document %}
-        <div class="attached-file">
             {% if article.document.url|is_image %}
-                <img src="{{ article.document.url }}" alt="Attached Image" style="max-width: 100%;">
+                <img src="{{ article.document.url }}" alt="Attached Image" class="img-fluid rounded mx-auto d-block" style="max-width: 100%;">
             {% else %}
                 <p>Attached Document:</p>
                 <a href="{{ article.document.url }}" download>{{ article.document.name }}</a>
             {% endif %}
-        </div>
     {% endif %}
 
     {% if article.link %}
-        <div class="article-link">
-            <p>Related Link:</p>
-            <a href="{{ article.link }}" target="_blank">{{ article.link }}</a>
-        </div>
+            <p style="margin-top: 20px">Related Link:
+                <a class="link-opacity-50-hover" href="{{ article.link }}" target="_blank">{{ article.link }}</a>
+            </p>
     {% endif %}
 
-    <button class="btn">
-        <a href="{% url 'contents:article_list' %}" class="back-link">Back to Article List</a>
-    </button>
+    <div class="d-grid gap-2 col-6 mx-auto">
+        <button class="btn">
+            <a href="{% url 'contents:article_list' %}" class="back-link">Back to Article List</a>
+        </button>
+    </div>
+
+    </div>
+
 
     <div class="article-header">
         <h2>Comments</h2>
         {% for comment in comments %}
         <div>
-            <p><strong><a href="{% url 'users:view_profile' comment.user.username %}">{{ comment.user.first_name }} {{ comment.user.last_name }}</a></strong> commented on {{ comment.created_at }}:</p>
+            <p><strong><a href="{% url 'users:view_profile' comment.user.username %}" class="link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">{{ comment.user.first_name }} {{ comment.user.last_name }}</a></strong> commented on {{ comment.created_at }}:</p>
             <p>{{ comment.content }}</p>
         </div>
         {% endfor %}
@@ -55,14 +56,14 @@
 
     <div class="article-header">
     {% if user.is_authenticated %}
-        <h3>Leave a comment</h3>
+        <h3>Your comment</h3>
         <form method="POST">
             {% csrf_token %}
             {{ comment_form.as_p }}
-            <button class="btn" type="submit">Submit</button>
+            <button class="btn" type="submit" style="margin-left: 0; margin-top: 5px">Submit</button>
         </form>
     {% else %}
-        <p>You must be logged in to leave a comment. <a href="{% url 'users:login' %}">Login here</a></p>
+        <p>You must log in to add a comment. <a href="{% url 'users:login' %}">Log in here</a></p>
     {% endif %}
     </div>
 

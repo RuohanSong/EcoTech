@@ -65,3 +65,13 @@ body {
     color: #81a684;
     border-block-color: #81a684;
 }
+
+.small {
+    font-size: unset;
+    display: contents;
+    margin-top: 10px;
+}
+
+.small a {
+    color: #81a684;
+}
