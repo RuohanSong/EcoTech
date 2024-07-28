@@ -19,8 +19,7 @@
             color: white;
         }
         .btn-edit:hover {
-            background-color: #0056b3;
-            border-color: #0056b3;
+            background-color: #2c6e49;
         }
         .btn-delete {
             background-color: #ba5f69;
@@ -52,12 +51,17 @@
             {% if user_articles %}
                 <h3>Articles published by {{ user_profile.user.first_name }} {{ user_profile.user.last_name }}</h3>
                 <div class="list-group">
+                {% if user_profile.user == user %}
                     {% for article in user_articles %}
-                        <div class="list-group-item d-flex justify-content-between align-items-center">
-                            <div>
+{#                        <div class="list-group-item d-flex justify-content-between align-items-center">#}
+                        <div class="d-flex w-100 justify-content-between list-group-item list-group-item-action">
+                            <div class="article-box" style="width: 75%">
                                 <a href="{% url 'contents:article_detail' article.id %}" class="list-group-item list-group-item-action">
-                                    <h5 class="mb-1">{{ article.title }}</h5>
-                                    <small class="text-body-secondary">Published on {{ article.created_at }}</small>
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h4 class="mb-1">{{ article.title }}</h4>
+                                        <small class="text-body-secondary">{{ article.get_category_label }}</small>
+                                    </div>
+                                    <small class="text-body-secondary">Updated at {{ article.updated_at }}</small>
                                 </a>
                             </div>
                             <div>
@@ -67,8 +71,23 @@
                         </div>
                     {% endfor %}
                 {% else %}
-                    <p>{{ user_profile.user.first_name }} {{ user_profile.user.last_name }} has not published any articles.</p>
+                    {% for article in user_articles %}
+                        <div class="list-group-item d-flex justify-content-between align-items-center">
+                            <div class="article-box" style="width: 100%">
+                                <a href="{% url 'contents:article_detail' article.id %}" class="list-group-item list-group-item-action">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h4 class="mb-1">{{ article.title }}</h4>
+                                        <small class="text-body-secondary">{{ article.get_category_label }}</small>
+                                    </div>
+                                    <small class="text-body-secondary">Updated at {{ article.updated_at }}</small>
+                                </a>
+                            </div>
+                        </div>
+                    {% endfor %}
                 {% endif %}
+            {% else %}
+                <p>{{ user_profile.user.first_name }} {{ user_profile.user.last_name }} has not published any articles.</p>
+            {% endif %}
             </div>
         </div>
     </div>

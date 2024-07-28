@@ -22,6 +22,18 @@
             <input type="text" class="form-control" id="title" name="title" placeholder="Article Title" value="{{ form.title.value }}" required>
         </div>
 
+
+        {#        Category Field#}
+        <div class="mb-3">
+            <label for="category" class="form-label">Category</label>
+            <select class="form-control" id="category" name="category" required>
+                <option value="" disabled selected>{{ article.get_category_label }}</option>
+                {% for value, label in form.category.field.choices %}
+                    <option value="{{ value }}">{{ label }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
         <!-- Content Field -->
         <div class="mb-3">
             <label for="content" class="form-label">Content</label>
@@ -41,7 +53,9 @@
         </div>
 
         <button type="submit" class="btn btn-primary">Save Changes</button>
+        <button  type="button" class="btn btn-primary">
+            <a href="{% url 'users:view_profile' user.username %}" class="mt-2">Cancel</a>
+        </button>
     </form>
-    <a href="{% url 'contents:article_list' %}" class="btn btn-secondary mt-2">Cancel</a>
 </div>
 {% endblock %}

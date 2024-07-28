@@ -28,6 +28,9 @@ class Article(models.Model):
     def __str__(self):
         return self.title
 
+    def get_category_label(self):
+        return dict(self.CATEGORY_CHOICES).get(self.category)
+
 
 class Comment(models.Model):
     article = models.ForeignKey(Article, related_name='comments', on_delete=models.CASCADE)

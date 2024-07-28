@@ -58,3 +58,15 @@
         color: #6a8e6d;
         border-color: #6a8e6d;
 }
+
+    .btn a {
+        color: white; /* Ensures the link text inside the button is white */
+        text-decoration: none;
+    }
+
+    .btn:hover a{
+        background: transparent;
+        color:#81a684;
+        font-weight: bold;
+        border-color: #81a684;
+    }

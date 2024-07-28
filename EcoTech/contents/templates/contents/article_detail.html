@@ -13,8 +13,10 @@
 {% block content %}
     <div class="article-header">
         <p class="fs-2 fw-bolder">{{ article.title }}</p>
-        <p class="fw-lighter">Published on {{ article.created_at }}</p>
-        <p class="fst-italic">By {{ article.uploaded_by.first_name }} {{ article.uploaded_by.last_name }}</p>
+        <p class="fw-lighter">Category: {{ article.get_category_label }}</p>
+        <p class="fw-lighter">Published at {{ article.created_at }}</p>
+        <p class="fw-lighter">Updated at {{ article.updated_at }}</p>
+        <p class="fst-italic">By <a href="{% url 'users:view_profile' article.uploaded_by.username %}" class="link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">{{ article.uploaded_by.first_name }} {{ article.uploaded_by.last_name }}</a></p>
     </div>
 
     <div class="article-content">
