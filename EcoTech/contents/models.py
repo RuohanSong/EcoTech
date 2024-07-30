@@ -15,7 +15,7 @@ class Article(models.Model):
         ('animals', 'Animals'),
     ]
 
-    category = models.CharField(max_length=50, choices=CATEGORY_CHOICES)
+    category = models.CharField(max_length=50, choices=CATEGORY_CHOICES, default='clean_energy')
     uploaded_by = models.ForeignKey(Member, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     content = models.TextField()
