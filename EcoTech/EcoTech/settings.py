@@ -49,7 +49,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    'core.visit_middleware.VisitMiddleware',
+    # 'core.visit_middleware.VisitMiddleware',
 ]
 
 ROOT_URLCONF = "EcoTech.urls"
@@ -131,4 +131,4 @@ AUTH_USER_MODEL = "users.Member"
 
 SESSION_COOKIE_AGE = 1200
 
-SESSION_SAVE_EVERY_REQUEST = True
+# SESSION_SAVE_EVERY_REQUEST = True
