@@ -29,7 +29,11 @@
             <select class="form-control" id="category" name="category" required>
                 <option value="" disabled selected>{{ article.get_category_label }}</option>
                 {% for value, label in form.category.field.choices %}
-                    <option value="{{ value }}">{{ label }}</option>
+                    {% if value == article.category %}
+                        <option value="{{ value }}" selected>{{ label }}</option>
+                    {% else %}
+                        <option value="{{ value }}">{{ label }}</option>
+                    {% endif %}
                 {% endfor %}
             </select>
         </div>
